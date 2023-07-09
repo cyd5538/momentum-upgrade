@@ -1,7 +1,7 @@
 import {Route, Routes} from 'react-router-dom';
-import Nav from './components/Nav'
+import Nav from './components/nav/Nav'
 import Home from './pages/Home';
-
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
+      <Toaster />
     </>
   )
 }

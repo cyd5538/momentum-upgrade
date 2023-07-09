@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import useGeoLocation from '@/hooks/useGeoLocation'
-import Navigation from './nav/NavItem'
+import Navigation from './NavItem'
 import { Weather } from '@/types/type';
 
 const Nav = () => {

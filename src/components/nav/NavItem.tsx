@@ -22,21 +22,21 @@ interface NavigationProps {
 const Navigation:React.FC<NavigationProps> = ({weatherData, Icon}) => {
 
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
+    <NavigationMenu >
+      <NavigationMenuList >
         <NavigationMenuItem>
           <NavigationMenuTrigger className="bg-violet-500">Menu</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="fixed ounded-md right-[5px] grid gap-3 p-1 md:w-[400px] drop-shadow-md lg:w-[510px] lg:grid-cols-[.75fr_1fr]">
+          <NavigationMenuContent >
+            <ul className="fixed rounded-2xl shadow-xl  right-[5px] grid gap-3 p-1 md:w-[400px] drop-shadow-md lg:w-[510px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <div className="flex h-full w-full select-none flex-col justify-end rounded-md  bg-violet-500 from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
                   <NavWeather weatherData={weatherData} Icon={Icon}/>
                 </div>
               </li>
-              <ListItem href="/" title="Todo">
+              <ListItem className="shadow-md" href="/" title="Todo">
                 나의 할일을 메모합니다.
               </ListItem>
-              <ListItem href="/favor" title="즐겨찾기">
+              <ListItem className="shadow-md" href="/favor" title="즐겨찾기">
                 나의 즐겨찾기
               </ListItem>
               <div className="flex flex-col gap-2 pb-2">
