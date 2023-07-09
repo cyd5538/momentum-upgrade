@@ -22,12 +22,12 @@ interface NavigationProps {
 const Navigation:React.FC<NavigationProps> = ({weatherData, Icon}) => {
 
   return (
-    <NavigationMenu >
+    <NavigationMenu>
       <NavigationMenuList >
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-violet-500">Menu</NavigationMenuTrigger>
-          <NavigationMenuContent >
-            <ul className="fixed rounded-2xl shadow-xl  right-[5px] grid gap-3 p-1 md:w-[400px] drop-shadow-md lg:w-[510px] lg:grid-cols-[.75fr_1fr]">
+          <NavigationMenuTrigger className="bg-violet-500 cursor-default">Menu</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="bg-white fixed rounded-2xl shadow-xl  right-[5px] grid gap-3 p-1 md:w-[400px] drop-shadow-md lg:w-[510px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <div className="flex h-full w-full select-none flex-col justify-end rounded-md  bg-violet-500 from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
                   <NavWeather weatherData={weatherData} Icon={Icon}/>

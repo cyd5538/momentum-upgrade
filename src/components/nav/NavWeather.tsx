@@ -12,6 +12,9 @@ const NavWeather:React.FC<NavWeatherProps> = ({weatherData, Icon}) => {
 
   return (
     <>
+      <h2 className="flex justify-center text-white text-xl font-semibold font-sans">
+        오늘 날씨
+      </h2>
       <div className="flex justify-center">
         <img src={Icon} alt="" width={100} height={100}/>
       </div>
