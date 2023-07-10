@@ -20,5 +20,5 @@ export type Todo = {
   name: string;
   status: string;
   bg : string
-  text? : string
+  text : string
 }

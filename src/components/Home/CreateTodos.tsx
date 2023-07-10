@@ -47,7 +47,7 @@ const bgColor = [
   "bg-black"
 ]
 
-const CreateTodos:React.FC<CreateTodoProps> = ({setTodos}) => {
+const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
   const [text, setText] = useState<string>(textColor[0]);
   const [bg, setBg] = useState<string>(bgColor[0]);
   const [todo, setTodo] = useState<Todo>({
@@ -88,12 +88,14 @@ const CreateTodos:React.FC<CreateTodoProps> = ({setTodos}) => {
       id: "",
       name: "",
       status: "todo",
-      bg
+      bg,
+      text
     });
+
+    setBg(bgColor[0])
+    setText(textColor[0])
   };
 
-  console.log(text)
- 
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -119,14 +121,18 @@ const CreateTodos:React.FC<CreateTodoProps> = ({setTodos}) => {
               글씨 색상
             </Label>
             <div className="grid grid-cols-6 gap-2 w-full">
-            {textColor.map((a) => {
-              return <div 
-              key={a}
-              className={`${text === a ? "border-black border-[2px]" : "border-[1px] border-black"} 
-              w-10 h-10 rounded-full font-bold cursor-pointer bg-zinc-200 flex justify-center items-center ${a}`}
-              onClick={() => setText(a)}
-              >가</div>
-            })}
+              {textColor.map((a) => {
+                const modifiedClass = a.replace(/text/, "bg");
+                return (
+                  <div
+                    key={a}
+                    className={`${text === a ? "border-black border-[2px]" : "border-[1px] border-black"
+                      } w-10 h-10 rounded-full font-bold cursor-pointer ${modifiedClass}`}
+                    onClick={() => setText(a)}
+                  >
+                  </div>
+                );
+              })}
             </div>
           </div>
           <div className="grid justify-center items-center gap-4">
@@ -134,18 +140,18 @@ const CreateTodos:React.FC<CreateTodoProps> = ({setTodos}) => {
               배경 색상
             </Label>
             <div className="grid grid-cols-6 gap-2 w-full">
-            {bgColor.map((a) => {
-              return <div 
-              key={a}
-              className={`${bg === a ? "border-black border-[2px]" : "border-[1px] border-black"} w-10 h-10 rounded-full  cursor-pointer ${a}`}
-              onClick={() => setBg(a)}
-              ></div>
-            })}
+              {bgColor.map((a) => {
+                return <div
+                  key={a}
+                  className={`${bg === a ? "border-black border-[2px]" : "border-[1px] border-black"} w-10 h-10 rounded-full  cursor-pointer ${a}`}
+                  onClick={() => setBg(a)}
+                ></div>
+              })}
             </div>
           </div>
-        <DialogFooter>
-          <Button type="submit">Add Todo</Button>
-        </DialogFooter>
+          <DialogFooter>
+            <Button type="submit">Add Todo</Button>
+          </DialogFooter>
         </form>
       </DialogContent>
     </Dialog>
