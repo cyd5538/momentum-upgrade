@@ -99,7 +99,7 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">할일 추가히기</Button>
+        <Button variant="outline" className="shadow-md bg-violet-500 hover:bg-violet-600 hover:text-white text-white">할일 추가히기</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -111,7 +111,7 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
               할일
             </Label>
             <Input
-              className="w-72 h-12 shadow-md "
+              className={`w-72 h-12 shadow-md ${bg} ${text}`}
               onChange={handleInputChange}
               value={todo.name}
             />

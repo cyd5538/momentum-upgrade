@@ -4,7 +4,7 @@ interface ListSectionHeaderProps {
   count : number
 }
 
-const ListSectionHeader:React.FC<ListSectionHeaderProps> = ({ text, bg, count }) => {
+const ListSectionHeader:React.FC<ListSectionHeaderProps> = ({ text, count }) => {
   return (
     <div className={`bg-white flex items-center h-12 shadow-md rounded-md uppercase text-sm text-black pl-2`}>
       {text}
