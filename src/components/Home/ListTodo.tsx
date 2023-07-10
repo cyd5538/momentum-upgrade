@@ -24,6 +24,8 @@ const ListTodo:React.FC<ListTodoProps> = ({todos,setTodos}) => {
 
   const status = ["todo", "progress", "complete"]; 
 
+  console.log(todos)
+
   return (
     <div className='flex gap-16'>
       {status.map((stat, index) => 

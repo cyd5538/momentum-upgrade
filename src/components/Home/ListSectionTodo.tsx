@@ -31,7 +31,7 @@ const ListSectionTodo:React.FC<ListSectionTodoProps> = ({todo, todos, setTodos})
   return (
     <div 
     ref={drag} 
-    className={`relative p-4 mt-4 shadow-md rounded-md ${isDragging ? "opacity-25" : "opacity-100"} cursor-grab`}>
+    className={`${todo.bg} ${todo.text} relative p-4 mt-4 shadow-md rounded-md ${isDragging ? "opacity-25" : "opacity-100"} cursor-grab`}>
       <p>{todo.name}</p>
       <button 
       className="absolute bottom-2 right-2"

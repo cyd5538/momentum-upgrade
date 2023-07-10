@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import CreateTodo from '@/components/Home/CreateTodo';
 import ListTodo from '@/components/Home/ListTodo';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import { Todo } from '@/types/type';
+import CreateTodos from '@/components/Home/CreateTodos';
 
 const Home = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className='w-screen h-screen flex flex-col items-center gap-16 pt-6'>
-        <CreateTodo setTodos={setTodos} />
+        <CreateTodos setTodos={setTodos}/>
         <ListTodo todos={todos} setTodos={setTodos} />
       </div>
     </DndProvider>
