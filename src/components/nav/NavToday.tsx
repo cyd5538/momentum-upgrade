@@ -25,7 +25,7 @@ const NavToday = () => {
 
   return (
     <div>
-      <div className='text-2xl font-bold text-purple-500'>{timer}</div>
+      <div className='text-2xl font-bold text-purple-500 dark:text-white'>{timer}</div>
     </div>
   );
 };

@@ -25,11 +25,11 @@ const Navigation:React.FC<NavigationProps> = ({weatherData, Icon}) => {
     <NavigationMenu>
       <NavigationMenuList >
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-violet-500 cursor-default">Menu</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-violet-500 dark:bg-zinc-800 cursor-default">Menu</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="bg-white fixed rounded-2xl shadow-xl  right-[5px] grid gap-3 p-1 md:w-[400px] drop-shadow-md lg:w-[510px] lg:grid-cols-[.75fr_1fr]">
+            <ul className="bg-white dark:bg-zinc-800  fixed rounded-2xl shadow-xl  right-[5px] grid gap-3 p-1 md:w-[400px] drop-shadow-md lg:w-[510px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
-                <div className="flex h-full w-full select-none flex-col justify-end rounded-md  bg-violet-500 from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
+                <div className="flex h-full w-full select-none flex-col justify-end rounded-md dark:bg-zinc-900 bg-violet-500 from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
                   <NavWeather weatherData={weatherData} Icon={Icon}/>
                 </div>
               </li>
@@ -62,7 +62,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline group outline-none transition-colors hover:bg-violet-600 hover:text-white focus:bg-violet-600 focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline group outline-none transition-colors hover:bg-violet-600 dark:hover:bg-zinc-900 hover:text-white focus:bg-violet-600 focus:text-accent-foreground",
             className
           )}
           {...props}

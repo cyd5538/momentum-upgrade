@@ -3,6 +3,7 @@ import axios from 'axios';
 import useGeoLocation from '@/hooks/useGeoLocation'
 import Navigation from './NavItem'
 import { Weather } from '@/types/type';
+import { ModeToggle } from '../ui/theme-toggle';
 
 const Nav = () => {
   const geoLocation = useGeoLocation();
@@ -36,8 +37,9 @@ const Nav = () => {
   const iconUrl = "http://openweathermap.org/img/w/" + Icon + ".png";
 
   return (
-    <nav className='w-full h-18 flex justify-end pr-8 pt-4'>
+    <nav className='w-full h-18 flex justify-end pr-8 pt-4 relative gap-2'>
       <Navigation weatherData={weatherData} Icon={iconUrl}/>
+      <ModeToggle />
     </nav>
   )
 }

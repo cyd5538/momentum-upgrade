@@ -20,7 +20,7 @@ export function NavDate() {
         <Button
           variant={"outline"}
           className={cn(
-            "w-[280px] justify-start text-left font-normal hover:bg-violet-500 hover:text-white",
+            "w-[280px] justify-start text-left font-normal hover:bg-violet-500 dark:hover:bg-zinc-900 hover:text-white",
             !date && "text-muted-foreground"
           )}
         >

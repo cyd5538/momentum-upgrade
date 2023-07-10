@@ -34,6 +34,7 @@ const textColor = [
 
 const bgColor = [
   "bg-white",
+  "bg-black",
   "bg-gray-300",
   "bg-zinc-500",
   "bg-red-500",
@@ -43,8 +44,7 @@ const bgColor = [
   "bg-emerald-500",
   "bg-sky-500",
   "bg-violet-700",
-  "bg-purple-800",
-  "bg-black"
+  "bg-purple-800"
 ]
 
 const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
@@ -126,7 +126,7 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
                 return (
                   <div
                     key={a}
-                    className={`${text === a ? "border-black border-[2px]" : "border-[1px] border-black"
+                    className={`${text === a ? "dark:border-white border-black border-[4px]" : "border-[1px] border-black dark:border-white"
                       } w-10 h-10 rounded-full font-bold cursor-pointer ${modifiedClass}`}
                     onClick={() => setText(a)}
                   >
@@ -143,7 +143,7 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
               {bgColor.map((a) => {
                 return <div
                   key={a}
-                  className={`${bg === a ? "border-black border-[2px]" : "border-[1px] border-black"} w-10 h-10 rounded-full  cursor-pointer ${a}`}
+                  className={`${bg === a ? "dark:border-white border-black border-[4px]" : "border-[1px] border-black dark:border-white"}  w-10 h-10 rounded-full  cursor-pointer ${a}`}
                   onClick={() => setBg(a)}
                 ></div>
               })}
