@@ -1,6 +1,7 @@
 import { Todo } from "@/types/type"
 import ListSectionHeader from "./ListSectionHeader";
 import ListSectionTodo from "./ListSectionTodo";
+import { useDrop } from "react-dnd";
 
 interface ListSectionProps {
   stat : string
@@ -19,6 +20,15 @@ const ListSection: React.FC<ListSectionProps> = ({
   progress,
   complete
 }) => {
+
+  const [{isOver }, drop] = useDrop(() => ({
+    accept : "todo",
+    drop: (item : Todo) => addItemToSection(item.id),
+    collect : (monitor) => ({
+      isOver: !!monitor.isOver()
+    })
+  }))
+
   let text = "시작전";
   let bg = "bg-violet-400";
   let todoMap = todo;
@@ -38,8 +48,24 @@ const ListSection: React.FC<ListSectionProps> = ({
     count = complete.length;
   }
 
+  const addItemToSection = (id : string) => {
+    setTodos(prev => {
+      const todoFilter = prev.map(a => {
+        if(a.id === id){
+          return {...a,status: stat}
+        }
+
+        return a
+      })
+
+      localStorage.setItem("todos", JSON.stringify(todoFilter))
+      
+      return todoFilter
+    })
+  }
+
   return (
-    <div className="w-72">
+    <div ref={drop} className={`w-72 rounded-md p-2 ${isOver ? "bg-violet-200" : "bg-white"}`}>
       <ListSectionHeader text={text} bg={bg} count={count} /> 
       {todoMap.map((todo) => (
         <ListSectionTodo key={todo.id} todo={todo} todos={todos} setTodos={setTodos}/>  

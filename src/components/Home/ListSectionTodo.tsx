@@ -1,6 +1,7 @@
 import { Todo } from "@/types/type"
 import { X } from "lucide-react";
 import { toast } from 'react-hot-toast';
+import { useDrag } from "react-dnd";
 
 interface ListSectionTodoProps {
   todo : Todo
@@ -9,6 +10,14 @@ interface ListSectionTodoProps {
 }
 
 const ListSectionTodo:React.FC<ListSectionTodoProps> = ({todo, todos, setTodos}) => {
+
+  const [{isDragging }, drag] = useDrag(() => ({
+    type : "todo",
+    item: {id: todo.id},
+    collect : (monitor) => ({
+      isDragging : !!monitor.isDragging()
+    })
+  }))
 
   const handleDelete = (id:string) => {
     const deleteTodo = todos.filter((a) => a.id !== id);
@@ -20,7 +29,9 @@ const ListSectionTodo:React.FC<ListSectionTodoProps> = ({todo, todos, setTodos})
   }
 
   return (
-    <div className={`relative p-4 mt-4 shadow-md rounded-md cursor-grab`}>
+    <div 
+    ref={drag} 
+    className={`relative p-4 mt-4 shadow-md rounded-md ${isDragging ? "opacity-25" : "opacity-100"} cursor-grab`}>
       <p>{todo.name}</p>
       <button 
       className="absolute bottom-2 right-2"

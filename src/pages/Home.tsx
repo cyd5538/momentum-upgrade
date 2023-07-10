@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import CreateTodo from '@/components/Home/CreateTodo';
 import ListTodo from '@/components/Home/ListTodo';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import { Todo } from '@/types/type';
 
@@ -14,15 +16,17 @@ const Home = () => {
     if (storedTodos) {
       setTodos(JSON.parse(storedTodos) as Todo[]);
     }
-  },[])
+  }, [])
 
   console.log(todos)
 
   return (
-    <div className='w-screen h-screen flex flex-col items-center gap-16 pt-6'>
-      <CreateTodo setTodos={setTodos}/>
-      <ListTodo todos={todos} setTodos={setTodos}/>
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div className='w-screen h-screen flex flex-col items-center gap-16 pt-6'>
+        <CreateTodo setTodos={setTodos} />
+        <ListTodo todos={todos} setTodos={setTodos} />
+      </div>
+    </DndProvider>
   )
 }
 
