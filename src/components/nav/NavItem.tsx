@@ -29,7 +29,7 @@ const Navigation:React.FC<NavigationProps> = ({weatherData, Icon}) => {
           <NavigationMenuContent>
             <ul className="bg-white dark:bg-zinc-800  fixed rounded-2xl shadow-xl  right-[5px] grid gap-3 p-1 md:w-[400px] drop-shadow-md lg:w-[510px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
-                <div className="flex h-full w-full select-none flex-col justify-end rounded-md dark:bg-zinc-900 bg-violet-500 from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
+                <div className="flex h-full w-full select-none flex-col justify-end rounded-md dark:bg-zinc-900 bg-violet-600 from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
                   <NavWeather weatherData={weatherData} Icon={Icon}/>
                 </div>
               </li>

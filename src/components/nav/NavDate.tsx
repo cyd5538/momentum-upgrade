@@ -20,12 +20,12 @@ export function NavDate() {
         <Button
           variant={"outline"}
           className={cn(
-            "w-[280px] justify-start text-left font-normal hover:bg-violet-500 dark:hover:bg-zinc-900 hover:text-white",
+            "w-[280px] justify-start text-left font-normal hover:bg-violet-700 dark:hover:bg-zinc-900  hover:text-white",
             !date && "text-muted-foreground"
           )}
         >
-          <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? format(date, "PPP") : <span>달력 보기</span>}
+          <CalendarIcon className="mr-2 h-4 w-4 text-white" />
+          {date ? format(date, "PPP") : <span className="text-white">달력 보기</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">

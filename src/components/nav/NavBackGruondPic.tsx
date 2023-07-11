@@ -34,7 +34,7 @@ export function NavBackgroundPic() {
         <DialogHeader>
           <DialogTitle>배경을 골라봅시다.</DialogTitle>
           <DialogDescription>
-            배경은 가능한 한 큰 이미지로 골라주세요.!
+            배경은 가능한 한 큰 이미지로 골라주세요.! ( jpeg,png )
           </DialogDescription>
         </DialogHeader>
         <NavImagePic onChange={bgImageGet}/>

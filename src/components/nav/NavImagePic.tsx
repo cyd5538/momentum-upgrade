@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 
 interface DropzoneProps {
@@ -9,6 +9,11 @@ interface DropzoneProps {
 
 const NavImagePic: React.FC<DropzoneProps> = ({ onChange, value, disabled }) => {
   const [base64, setBase64] = useState(value);
+
+  useEffect(() => {
+    const storedBgImage = localStorage.getItem('bgImage');
+    setBase64(storedBgImage as string)
+  }, []);
 
   const handleChange = useCallback(
     (base64: string) => {

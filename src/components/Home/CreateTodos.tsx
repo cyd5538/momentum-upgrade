@@ -92,9 +92,9 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
       text
     });
 
-    setBg(bgColor[0])
-    setText(textColor[0])
   };
+
+  console.log(bg,text)
 
   return (
     <Dialog>
