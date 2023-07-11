@@ -5,6 +5,7 @@ import Navigation from './NavItem'
 import { Weather } from '@/types/type';
 import { ModeToggle } from '../ui/theme-toggle';
 import { NavBackgroundPic } from './NavBackGruondPic';
+import NavLifeQuotes from './NavLifeQuotes';
 
 const Nav = () => {
   const geoLocation = useGeoLocation();
@@ -38,10 +39,13 @@ const Nav = () => {
   const iconUrl = "http://openweathermap.org/img/w/" + Icon + ".png";
 
   return (
-    <nav className='w-full h-18 flex justify-end pr-8 pt-4 relative gap-2'>
-      <Navigation weatherData={weatherData} Icon={iconUrl}/>
-      <NavBackgroundPic />
-      <ModeToggle />
+    <nav className='w-full h-18 flex justify-end items-start pr-8 pt-4 p-2 relative'>
+      <NavLifeQuotes />
+      <div className='flex gap-2 items-center'>
+        <Navigation weatherData={weatherData} Icon={iconUrl}/>
+        <NavBackgroundPic />
+        <ModeToggle />
+      </div>
     </nav>
   )
 }

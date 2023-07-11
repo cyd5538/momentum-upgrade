@@ -13,13 +13,14 @@ import NavToday from "./NavToday"
 import { NavDate } from "./NavDate"
 import NavWeather from "./NavWeather"
 import { Weather } from "@/types/type"
+import { Link } from "react-router-dom"
 
 interface NavigationProps {
-  weatherData? : Weather
-  Icon? : string
+  weatherData?: Weather
+  Icon?: string
 }
 
-const Navigation:React.FC<NavigationProps> = ({weatherData, Icon}) => {
+const Navigation: React.FC<NavigationProps> = ({ weatherData, Icon }) => {
 
   return (
     <NavigationMenu>
@@ -30,15 +31,19 @@ const Navigation:React.FC<NavigationProps> = ({weatherData, Icon}) => {
             <ul className="bg-white dark:bg-zinc-800  fixed rounded-2xl shadow-xl  right-[5px] grid gap-3 p-1 md:w-[400px] drop-shadow-md lg:w-[510px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <div className="flex h-full w-full select-none flex-col justify-end rounded-md dark:bg-zinc-900 bg-violet-600 from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
-                  <NavWeather weatherData={weatherData} Icon={Icon}/>
+                  <NavWeather weatherData={weatherData} Icon={Icon} />
                 </div>
               </li>
-              <ListItem className="shadow-md" href="/" title="Todo">
-                나의 할일을 메모합니다.
-              </ListItem>
-              <ListItem className="shadow-md" href="/favor" title="즐겨찾기">
-                나의 즐겨찾기
-              </ListItem>
+              <Link className="shadow-md" to="/" title="Todo">
+                <ListItem>
+                  나의 할일을 메모합니다.
+                </ListItem>
+              </Link>
+              <Link className="shadow-md" to="/favor" title="즐겨찾기">
+                <ListItem>
+                  나의 즐겨찾기
+                </ListItem>
+              </Link>
               <div className="flex flex-col gap-2 pb-2">
                 <NavToday />
                 <NavDate />

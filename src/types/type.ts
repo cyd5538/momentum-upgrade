@@ -22,3 +22,8 @@ export type Todo = {
   bg : string
   text : string
 }
+
+export type Quote = {
+  author: string;
+  message: string;
+}

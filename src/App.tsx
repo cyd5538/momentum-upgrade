@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from './components/ui/theme-provider';
 import { useSelector } from 'react-redux';
+import Favor from './pages/Favor';
 
 function App() {
   const bg = useSelector((state: { background: { bgImage: string } }) => state.background.bgImage);
@@ -24,6 +25,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/favor" element={<Favor />} />
         </Routes>
         <Toaster />
       </ThemeProvider>
