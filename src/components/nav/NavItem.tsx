@@ -25,7 +25,7 @@ const Navigation:React.FC<NavigationProps> = ({weatherData, Icon}) => {
     <NavigationMenu>
       <NavigationMenuList >
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-violet-500 dark:bg-zinc-800 cursor-default">Menu</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-violet-500 dark:bg-zinc-800 cursor-default dark:hover:bg-zinc-900">Menu</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="bg-white dark:bg-zinc-800  fixed rounded-2xl shadow-xl  right-[5px] grid gap-3 p-1 md:w-[400px] drop-shadow-md lg:w-[510px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">

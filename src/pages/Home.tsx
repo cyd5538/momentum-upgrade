@@ -17,12 +17,9 @@ const Home = () => {
       setTodos(JSON.parse(storedTodos) as Todo[]);
     }
   }, [])
-
-  console.log(todos)
-
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className='w-screen h-screen flex flex-col items-center gap-16 pt-6'>
+      <div className='pb-16 flex flex-col items-center gap-16 pt-6'>
         <CreateTodos setTodos={setTodos}/>
         <ListTodo todos={todos} setTodos={setTodos} />
       </div>
