@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className='pb-16 flex flex-col items-center gap-16 pt-6'>
-        <CreateTodos setTodos={setTodos}/>
+        <CreateTodos todos={todos} setTodos={setTodos}/>
         <ListTodo todos={todos} setTodos={setTodos} />
       </div>
     </DndProvider>

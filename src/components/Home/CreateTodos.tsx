@@ -52,14 +52,12 @@ const bgColor = [
 
 
 const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
-  const [text, setText] = useState<string>(textColor[0]);
-  const [bg, setBg] = useState<string>(bgColor[0]);
   const [todo, setTodo] = useState<Todo>({
     id: "",
     name: "",
     status: "todo",
-    bg,
-    text
+    bg : bgColor[0],
+    text : textColor[0]
   });
   const [showPicker, setShowPicker] = useState<boolean>(false);
 
@@ -68,9 +66,7 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
     setTodo({
       ...todo,
       id: uniqueId,
-      name: e.target.value,
-      bg,
-      text
+      name: e.target.value
     });
   };
 
@@ -93,8 +89,8 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
       id: "",
       name: "",
       status: "todo",
-      bg,
-      text
+      bg : bgColor[0],
+      text : textColor[0]
     });
 
   };
@@ -106,7 +102,7 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
     }));
     setShowPicker(false);
   };
-
+  
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -122,7 +118,7 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
               할일
             </Label>
             <Input
-              className={`w-72 h-12 shadow-md ${bg} ${text}`}
+              className={`w-72 h-12 shadow-md ${todo.bg} ${todo.text}`}
               onChange={handleInputChange}
               value={todo.name}
             >
@@ -142,13 +138,16 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
               {textColor.map((a) => {
                 const modifiedClass = a.replace(/text/, "bg");
                 return (
-                  <div
-                    key={a}
-                    className={`${text === a ? "dark:border-white border-black border-[4px]" : "border-[1px] border-black dark:border-white"
-                      } w-10 h-10 rounded-full font-bold cursor-pointer ${modifiedClass}`}
-                    onClick={() => setText(a)}
-                  >
-                  </div>
+                <div
+                  key={a}
+                  className={`${todo.text === a ? "dark:border-white border-black border-[4px]" : "border-[1px] border-black dark:border-white"
+                    } w-10 h-10 rounded-full font-bold cursor-pointer ${modifiedClass}`}
+                  onClick={() => setTodo({
+                    ...todo,
+                    text: a,
+                  })}
+                >
+                </div>
                 );
               })}
             </div>
@@ -161,8 +160,11 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
               {bgColor.map((a) => {
                 return <div
                   key={a}
-                  className={`${bg === a ? "dark:border-white border-black border-[4px]" : "border-[1px] border-black dark:border-white"}  w-10 h-10 rounded-full  cursor-pointer ${a}`}
-                  onClick={() => setBg(a)}
+                  className={`${todo.bg === a ? "dark:border-white border-black border-[4px]" : "border-[1px] border-black dark:border-white"}  w-10 h-10 rounded-full  cursor-pointer ${a}`}
+                  onClick={() => setTodo({
+                    ...todo,
+                    bg: a,
+                  })}
                 ></div>
               })}
             </div>
