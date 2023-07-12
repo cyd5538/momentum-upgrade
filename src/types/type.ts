@@ -35,3 +35,4 @@ export type Favor = {
   image? : string;
   status : string;
 };
+

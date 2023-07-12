@@ -12,6 +12,8 @@ import { Label } from "@/components/ui/label"
 import { Todo } from "@/types/type";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import Picker, { EmojiClickData } from "emoji-picker-react";
+import { Smile } from "lucide-react";
 
 interface CreateTodoProps {
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
@@ -47,6 +49,8 @@ const bgColor = [
   "bg-purple-800"
 ]
 
+
+
 const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
   const [text, setText] = useState<string>(textColor[0]);
   const [bg, setBg] = useState<string>(bgColor[0]);
@@ -57,6 +61,7 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
     bg,
     text
   });
+  const [showPicker, setShowPicker] = useState<boolean>(false);
 
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const uniqueId = Math.random().toString(16).slice(2);
@@ -94,6 +99,14 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
 
   };
 
+  const onEmojiClick = (event : EmojiClickData) => {
+    setTodo((prevTodo) => ({
+      ...prevTodo,
+      name: prevTodo.name += event.emoji
+    }));
+    setShowPicker(false);
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -104,7 +117,7 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
           <DialogTitle>Add Todo</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="grid gap-4 py-4">
-          <div className="grid justify-center items-center gap-4">
+          <div className="grid justify-center items-center gap-4 relative">
             <Label htmlFor="name" className="text-left">
               할일
             </Label>
@@ -112,7 +125,14 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
               className={`w-72 h-12 shadow-md ${bg} ${text}`}
               onChange={handleInputChange}
               value={todo.name}
-            />
+            >
+            </Input>
+            <div className="absolute right-14 bottom-3 cursor-pointer rounded-md shadow-sm shadow-zinc-500 p-[1px]" onClick={() => setShowPicker((val) => !val)}>
+              <Smile />
+            </div>
+            {showPicker && (
+              <Picker onEmojiClick={onEmojiClick} />
+            )}
           </div>
           <div className="grid justify-center items-center gap-4">
             <Label htmlFor="username" className="text-left">
