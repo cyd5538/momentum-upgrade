@@ -126,9 +126,11 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
             <div className="absolute right-14 bottom-3 cursor-pointer rounded-md shadow-sm shadow-zinc-500 p-[1px]" onClick={() => setShowPicker((val) => !val)}>
               <Smile />
             </div>
-            {showPicker && (
-              <Picker onEmojiClick={onEmojiClick} />
-            )}
+            <div className="absolute top-6">
+              {showPicker && (
+                <Picker onEmojiClick={onEmojiClick}/>
+              )}
+            </div>
           </div>
           <div className="grid justify-center items-center gap-4">
             <Label htmlFor="username" className="text-left">
