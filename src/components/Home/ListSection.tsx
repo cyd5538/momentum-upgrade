@@ -65,7 +65,7 @@ const ListSection: React.FC<ListSectionProps> = ({
   }
 
   return (
-    <div ref={drop} className={`w-72 rounded-md p-2 bg-opacity-70 dark:bg-opacity-70  ${isOver ? "bg-violet-200" : "bg-white dark:bg-zinc-800 "}`}>
+    <div ref={drop} className={`w-72 rounded-md p-2  ${isOver ? "bg-violet-200" : "bg-white dark:bg-zinc-800 "}`}>
       <ListSectionHeader text={text} bg={bg} count={count} /> 
       {todoMap.map((todo) => (
         <ListSectionTodo key={todo.id} todo={todo} todos={todos} setTodos={setTodos}/>  

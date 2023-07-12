@@ -94,8 +94,6 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
 
   };
 
-  console.log(bg,text)
-
   return (
     <Dialog>
       <DialogTrigger asChild>

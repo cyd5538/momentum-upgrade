@@ -27,3 +27,11 @@ export type Quote = {
   author: string;
   message: string;
 }
+
+export type Favor = {
+  id: string;
+  title: string;
+  link: string;
+  image? : string;
+  status : string;
+};

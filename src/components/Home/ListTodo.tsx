@@ -25,7 +25,7 @@ const ListTodo:React.FC<ListTodoProps> = ({todos,setTodos}) => {
   const status = ["todo", "progress", "complete"]; 
 
   return (
-    <div className='flex gap-16 '>
+    <div className='grid grid-cols-1 lg:grid-cols-3 gap-16 '>
       {status.map((stat, index) => 
       <ListSection 
         key={index} 

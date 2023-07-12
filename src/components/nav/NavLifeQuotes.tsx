@@ -33,11 +33,9 @@ const NavLifeQuotes = () => {
     }
   }, [data]);
 
-  console.log(resize);
-
   return (
     <div className={`text-white dark:bg-zinc-900 
-    ${resize ?` w-[500px] bg-violet-500 opacity-90 ease-linear` : `duration-200 w-12 h-12 ease-linear bg-violet-500`} z-10 p-2 shadow-xl rounded-xl absolute left-2`}>
+    ${resize ?`w-3/4 p2 lg:w-[500px] bg-violet-500 opacity-90 ease-linear` : `duration-200 w-12 h-12 ease-linear bg-violet-500`} z-10 p-2 shadow-xl rounded-xl absolute left-2`}>
       <div className='relative'>
         {resize ? 
         <>
