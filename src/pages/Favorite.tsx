@@ -1,19 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Favor } from "@/types/type";
 import CreateFavor from '@/components/favor/CreateFavor';
 import FavorList from '@/components/favor/FavorList';
+import useLocalStorage from '@/hooks/useLocalstorage';
 
 const Favorite = () => {
-  const [favorList, setFavorList] = useState<Favor[]>([]);
+  const [favorList, setFavorList] = useLocalStorage<Favor[]>('favor', []);
 
   useEffect(() => {
-    const storedFavor: string | null = localStorage.getItem('favor');
-    if (storedFavor) {
-      setFavorList(JSON.parse(storedFavor) as Favor[]);
-    }
-  }, [])
+    localStorage.setItem('favor', JSON.stringify(favorList));
+  }, [favorList]);
   
   return (
     <DndProvider backend={HTML5Backend}>
