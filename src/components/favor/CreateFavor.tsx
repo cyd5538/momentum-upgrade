@@ -13,18 +13,24 @@ import { DialogDescription } from "@radix-ui/react-dialog";
 import { useState } from "react";
 import { Favor } from "@/types/type";
 import { toast } from "react-hot-toast";
+import { Edit } from "lucide-react";
 
 interface handleFavorChangeProps {
+  title?: string
   setFavorList: React.Dispatch<React.SetStateAction<Favor[]>>;
+  id?: string
+  link?: string
+  text?: string
+  image?: string
 }
 
-const CreateFavor:React.FC<handleFavorChangeProps> = ({setFavorList}) => {
+const CreateFavor: React.FC<handleFavorChangeProps> = ({ title, setFavorList, id, link, text, image }) => {
   const [favor, setFavor] = useState<Favor>({
-    id: "",
-    title: "",
-    link: "",
-    image : "",
-    status : "high"
+    id: id || "",
+    title: text || "",
+    link: link || "",
+    image: image || "",
+    status: "high"
   });
 
   const handleFavorChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -39,31 +45,54 @@ const CreateFavor:React.FC<handleFavorChangeProps> = ({setFavorList}) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (favor.title.length < 1 || 
+    if (favor.title.length < 1 ||
       favor.link.length < 1
-      ) {
+    ) {
       return toast.error("빈칸은 안됩니다");
     }
 
-    setFavorList((prev) => {
-      const list = [...prev, favor];
-      localStorage.setItem("favor", JSON.stringify(list));
-      return list;
-    });
+    if (!id) {
+      setFavorList((prev) => {
+        const list = [...prev, favor];
+        localStorage.setItem("favor", JSON.stringify(list));
+        return list;
+      });
 
-    toast.success("Success");
+      toast.success("즐겨찾기에 추가했습니다.");
+
+    } else {
+      setFavorList((prev) => {
+        const updatedList = prev.map((item) => {
+          if (item.id === id) {
+            return {
+              ...item,
+              title: favor.title,
+              link: favor.link,
+              image: favor.image
+            };
+          }
+          return item;
+        });
+        localStorage.setItem("favor", JSON.stringify(updatedList));
+        return updatedList;
+      });
+      toast.success("즐겨찾기를 수정했습니다.");
+    }
   };
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">즐겨찾기 추가</Button>
+        {title ?
+          <Button variant="outline">{title}</Button> :
+          <button className=" hover:bg-zinc-800 hover:text-white p-1 rounded-full"><Edit className="w-[16px] h-[16px]" /></button>
+        }
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>즐겨찾기</DialogTitle>
+          <DialogTitle>{id ? "즐겨찾기 수정" : "즐겨찾기"}</DialogTitle>
           <DialogDescription>
-            제목과 링크를 넣어주세요
+            {id ? "수정해주세요 " : "제목과 링크를 넣어주세요"}
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
@@ -106,7 +135,7 @@ const CreateFavor:React.FC<handleFavorChangeProps> = ({setFavorList}) => {
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit">즐겨찾기 추가</Button>
+            <Button type="submit">{!id ? "즐겨찾기 추가" : "수정"}</Button>
           </DialogFooter>
         </form>
       </DialogContent>

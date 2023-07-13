@@ -2,6 +2,7 @@ import { Favor } from "@/types/type"
 import { ImageOff } from "lucide-react";
 import { X } from "lucide-react";
 import { useDrag } from "react-dnd";
+import CreateFavor from "./CreateFavor";
 
 interface FavorListSectionListProps {
   list: Favor
@@ -34,7 +35,7 @@ const FavorListSectionList: React.FC<FavorListSectionListProps> = ({ list, high,
         className={`flex mt-4 gap-2 shadow-md p-2 dark:bg-zinc-900 rounded-md justify-center items-center ${isDragging ? "opacity-25" : "opacity-100"} cursor-grab`}>
         {list.image ?
           <img src={list.image} alt={list.title} className="w-4 h-4 md:w-10 md:h-10 shadow-md object-cover rounded-full" />
-          : <ImageOff className="w-4 h-4 md:w-10 md:h-10 shadow-md rounded-full"/>
+          : <ImageOff className="w-4 h-4 md:w-10 md:h-10 shadow-md rounded-full" />
         }
         <a
           href={list.link}
@@ -42,12 +43,15 @@ const FavorListSectionList: React.FC<FavorListSectionListProps> = ({ list, high,
         >
           <p className="text-blcak text-sm md:text-base font-sans font-bold underline">{list.title}</p>
         </a>
-        <button
-          className=""
-          onClick={() => handleDelete(list.id)}
-        >
-          <X />
-        </button>
+        <div className="flex flex-row pl-2">
+          <CreateFavor setFavorList={setFavorList} id={list.id} text={list.title} link={list.link} image={list.image}/>
+          <button
+            className="hover:bg-zinc-800 hover:text-white p-1 rounded-full"
+            onClick={() => handleDelete(list.id)}
+          >
+            <X className="w-[16px] h-[16px]" />
+          </button>
+        </div>
       </div>
     </>
   )

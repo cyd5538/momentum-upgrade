@@ -28,9 +28,9 @@ const Navigation: React.FC<NavigationProps> = ({ weatherData, Icon }) => {
         <NavigationMenuItem>
           <NavigationMenuTrigger className="bg-violet-500 dark:bg-zinc-800 cursor-default dark:hover:bg-zinc-900">Menu</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="bg-white dark:bg-zinc-800  fixed rounded-2xl shadow-xl  right-[5px] grid gap-3 p-1 md:w-[400px] drop-shadow-md lg:w-[510px] lg:grid-cols-[.75fr_1fr]">
+            <ul className="bg-violet-900 dark:bg-zinc-800  fixed rounded-2xl shadow-xl  right-[5px] grid gap-3 p-1 md:w-[400px] drop-shadow-md lg:w-[510px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
-                <div className="flex h-full w-full select-none flex-col justify-end rounded-md dark:bg-zinc-900 bg-violet-600 from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
+                <div className="flex h-full w-full select-none flex-col justify-end rounded-md dark:bg-zinc-900 bg-violet-600 shadow-md from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
                   <NavWeather weatherData={weatherData} Icon={Icon} />
                 </div>
               </li>
@@ -72,8 +72,8 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground group-hover:text-gray-300">
+          <div className="text-sm font-medium leading-none text-white ">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-white text-muted-foreground ">
             {children}
           </p>
         </a>

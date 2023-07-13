@@ -16,7 +16,7 @@ const Favorite = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className='pb-16 flex flex-col items-center gap-16 pt-6'>
-        <CreateFavor setFavorList={setFavorList}/>
+        <CreateFavor setFavorList={setFavorList} title="즐겨찾기 추가"/>
         <FavorList favorList={favorList} setFavorList={setFavorList} />
       </div>
     </DndProvider>
