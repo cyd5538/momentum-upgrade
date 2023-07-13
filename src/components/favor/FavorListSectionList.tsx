@@ -1,4 +1,5 @@
 import { Favor } from "@/types/type"
+import { ImageOff } from "lucide-react";
 import { X } from "lucide-react";
 import { useDrag } from "react-dnd";
 
@@ -31,7 +32,10 @@ const FavorListSectionList: React.FC<FavorListSectionListProps> = ({ list, high,
       <div
         ref={drag}
         className={`flex mt-4 gap-2 shadow-md p-2 dark:bg-zinc-900 rounded-md justify-center items-center ${isDragging ? "opacity-25" : "opacity-100"} cursor-grab`}>
-        <img src={list.image} alt={list.title} className="w-4 h-4 md:w-10 md:h-10 shadow-md object-cover rounded-full"/>
+        {list.image ?
+          <img src={list.image} alt={list.title} className="w-4 h-4 md:w-10 md:h-10 shadow-md object-cover rounded-full" />
+          : <ImageOff className="w-4 h-4 md:w-10 md:h-10 shadow-md rounded-full"/>
+        }
         <a
           href={list.link}
           target="_blank"
@@ -41,7 +45,7 @@ const FavorListSectionList: React.FC<FavorListSectionListProps> = ({ list, high,
         <button
           className=""
           onClick={() => handleDelete(list.id)}
-        > 
+        >
           <X />
         </button>
       </div>
