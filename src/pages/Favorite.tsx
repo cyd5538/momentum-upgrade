@@ -4,7 +4,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Favor } from "@/types/type";
 import CreateFavor from '@/components/favor/CreateFavor';
 import FavorList from '@/components/favor/FavorList';
-import useLocalStorage from '@/hooks/useLocalstorage';
+import useLocalStorage from '@/hooks/useLocalStorage.tsx';
 
 const Favorite = () => {
   const [favorList, setFavorList] = useLocalStorage<Favor[]>('favor', []);
