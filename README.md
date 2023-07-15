@@ -1,7 +1,7 @@
 # momentum
 
 ## 🚀 배포링크
-[[https://marketgao.vercel.app/](https://stimulationup.vercel.app/)](https://stimulationup.vercel.app/)
+https://stimulationup.vercel.app/
 ## 💻 기술스택
 * React, Vite
 * Redux-toolkit
