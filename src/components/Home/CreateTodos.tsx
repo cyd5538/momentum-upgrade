@@ -13,7 +13,7 @@ import { Todo } from "@/types/type";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import Picker, { EmojiClickData } from "emoji-picker-react";
-import { Smile } from "lucide-react";
+import { Smile, X } from "lucide-react";
 
 interface CreateTodoProps {
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
@@ -123,13 +123,17 @@ const CreateTodos: React.FC<CreateTodoProps> = ({ setTodos }) => {
               value={todo.name}
             >
             </Input>
-            <div className="absolute right-14 bottom-3 cursor-pointer rounded-md shadow-sm shadow-zinc-500 p-[1px]" onClick={() => setShowPicker((val) => !val)}>
+            <div className="absolute dark:text-black right-14 bottom-3 cursor-pointer rounded-md shadow-sm shadow-zinc-500 p-[1px]" onClick={() => setShowPicker((val) => !val)}>
               <Smile />
             </div>
             <div className="absolute top-6">
               {showPicker && (
-                <Picker onEmojiClick={onEmojiClick}/>
+                <>
+                  <Picker onEmojiClick={onEmojiClick}/>
+                  <div className="absolute top-[-2px] right-[5px] cursor-pointer p-1 hover:bg-gray-400 text-black dark:hover:bg-zinc-600 rounded-full" onClick={() => setShowPicker(false)}><X size={20}/></div>
+                </>
               )}
+              
             </div>
           </div>
           <div className="grid justify-center items-center gap-4">
